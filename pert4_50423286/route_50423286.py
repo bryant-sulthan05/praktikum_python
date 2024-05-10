@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request
-import time
-from threading import Thread
 
 
 app = Flask(__name__)
@@ -32,14 +30,23 @@ def my_profile():
 
 @app.route('/luas_segitiga', methods=['GET', 'POST'])
 def luas_segitiga():
-    if request.method == 'POST':
-        alas = float(request.form['alas'])
-        tinggi = float(request.form['tinggi'])
-        rumus = float((1/2) * alas * tinggi)
-        return render_template('luas_segitiga.html', hasil=rumus)
-    else:
-        return render_template('luas_segitiga.html', hasil='---')
+  if request.method == 'POST':
+    alas = float(request.form['alas'])
+    tinggi = float(request.form['tinggi'])
+    rumus = float((1/2) * alas * tinggi)
+    return render_template('luas_segitiga.html', hasil=rumus)
+  else:
+    return render_template('luas_segitiga.html', hasil='---')
 
+@app.route('/whistlist', methods=['GET', 'POST'])
+def whistlist():
+  if request.method == 'POST':
+    whistlist = []
+    addNewList = str(request.form['newList']).lower()
+    whistlist.append(addNewList)
+    return render_template('whistlist.html', whistlist=whistlist)
+  else:
+    return render_template('whistlist.html')
 
 if __name__ == '__main__':
   app.run(debug=True)
