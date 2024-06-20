@@ -3,46 +3,43 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import QFont
 
 def main():
-    global app, window, nama_textbox, npm_textbox, kelas_textbox, jurusan_textbox, hp_textbox
+    global app, window, nama_textbox, ktp_textbox, alamat_textbox, barang_textbox
     app = QApplication([])
 
     window = QWidget()
     window.setGeometry(400, 200, 400, 300)
-    window.setWindowTitle("Pertemuan 6 - 50423286")
+    window.setWindowTitle("Ujian AP2B - 50423286")
 
     layout = QVBoxLayout()
     layout.setSpacing(10)
     layout.setContentsMargins(20, 20, 20, 20)
 
-    label_judul = QLabel("Masukkan data diri Anda: ")
+    label_judul = QLabel("Masukkan Barang Belanjaan Anda: ")
     label_judul.setAlignment(Qt.AlignCenter)
     label_judul.setFont(QFont("Arial", 16, QFont.Bold))
     label_judul.setStyleSheet('color: #00215E')
 
     label_nama = QLabel("Nama: ")
-    label_npm = QLabel("NPM: ")
-    label_kelas = QLabel("Kelas: ")
-    label_jurusan = QLabel("Jurusan: ")
-    label_hp = QLabel("No Hp: ")
+    label_ktp = QLabel("KTP: ")
+    label_alamat = QLabel("Alamat: ")
+    label_barang = QLabel("Barang: ")
 
-    labels = [label_nama, label_npm, label_kelas, label_jurusan, label_hp]
+    labels = [label_nama, label_ktp, label_alamat, label_barang]
     for i in labels:
         i.setFont(QFont("Arial", 12, QFont.Bold))
         i.setStyleSheet('color: #00215E')
 
     nama_textbox = QLineEdit()
-    npm_textbox = QLineEdit()
-    kelas_textbox = QLineEdit()
-    jurusan_textbox = QLineEdit()
-    hp_textbox = QLineEdit()
+    ktp_textbox = QLineEdit()
+    alamat_textbox = QLineEdit()
+    barang_textbox = QLineEdit()
 
-    nama_textbox.setPlaceholderText("Masukkan nama, contoh: *Andi Budi")
-    npm_textbox.setPlaceholderText("Masukkan npm, contoh: *50xxxxx")
-    kelas_textbox.setPlaceholderText("Masukkan kelas, contoh: *1IA03 atau 1ia03")
-    jurusan_textbox.setPlaceholderText("Masukkan jurusan, contoh: *Informatika")
-    hp_textbox.setPlaceholderText("Masukkan no hp yang aktif, contoh: *08xxxxxxxx")
+    nama_textbox.setPlaceholderText("Masukkan Nama Anda")
+    ktp_textbox.setPlaceholderText("Masukkan No KTP Anda")
+    alamat_textbox.setPlaceholderText("Masukkan Alamat Anda")
+    barang_textbox.setPlaceholderText("Masukkan Barang Belanjaan Anda")
 
-    textboxes = [nama_textbox, npm_textbox, kelas_textbox, jurusan_textbox, hp_textbox]
+    textboxes = [nama_textbox, ktp_textbox, alamat_textbox, barang_textbox]
     for tbox in textboxes:
         tbox.setFont(QFont("Arial", 12, QFont.Bold))
         tbox.setStyleSheet('padding: 5px; border: .5px solid #FC4100; border-radius: 5px;')
@@ -55,14 +52,12 @@ def main():
     layout.addWidget(label_judul)
     layout.addWidget(label_nama)
     layout.addWidget(nama_textbox)
-    layout.addWidget(label_npm)
-    layout.addWidget(npm_textbox)
-    layout.addWidget(label_kelas)
-    layout.addWidget(kelas_textbox)
-    layout.addWidget(label_jurusan)
-    layout.addWidget(jurusan_textbox)
-    layout.addWidget(label_hp)
-    layout.addWidget(hp_textbox)
+    layout.addWidget(label_ktp)
+    layout.addWidget(ktp_textbox)
+    layout.addWidget(label_alamat)
+    layout.addWidget(alamat_textbox)
+    layout.addWidget(label_barang)
+    layout.addWidget(barang_textbox)
     layout.addWidget(button_input, alignment=Qt.AlignCenter)
 
     window.setLayout(layout)
@@ -70,16 +65,16 @@ def main():
     app.exec_()
 
 def on_clicked():
-    if nama_textbox.text() and npm_textbox.text() and kelas_textbox.text():
+    if nama_textbox.text() and ktp_textbox.text() and alamat_textbox.text():
         message = QMessageBox()
         message.setStyleSheet("background-color: #00215E; color: #FC4100")
-        message.information(window, "Data diri", "Nama: " + nama_textbox.text() + "\nNPM: " + npm_textbox.text() + "\nKelas: " + kelas_textbox.text() + "\nJurusan: " + jurusan_textbox.text() + "\nNo Hp: " + hp_textbox.text())
+        message.information(window, "Data diri", "Nama: " + nama_textbox.text() + "\nNPM: " + ktp_textbox.text() + "\nKelas: " + alamat_textbox.text() + "\nJurusan: " + barang_textbox.text() + "\nNo Hp: " + .text())
 
         nama_textbox.setText("")
-        npm_textbox.setText("")
-        kelas_textbox.setText("")
-        jurusan_textbox.setText("")
-        hp_textbox.setText("")
+        ktp_textbox.setText("")
+        alamat_textbox.setText("")
+        barang_textbox.setText("")
+        .setText("")
     else :
         message = QMessageBox()
         message.setStyleSheet("background-color: #FC4100; color: #AF0404")
